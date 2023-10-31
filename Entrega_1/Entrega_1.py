@@ -1,13 +1,18 @@
 import json
 
 
-def ingreso_usuario(nombre_de_usuario, clave):
+def get_usuarios():
     try:
         with open("usuarios.json", "r") as archivo:
             usuarios = json.load(archivo)
     except FileNotFoundError:
         usuarios = {}
 
+    return usuarios
+
+
+def ingreso_usuario(nombre_de_usuario, clave):
+    usuarios = get_usuarios()
     usuarios[nombre_de_usuario] = clave
 
     with open("usuarios.json", "w") as archivo:
@@ -15,13 +20,8 @@ def ingreso_usuario(nombre_de_usuario, clave):
 
 
 def nuevo_usuario():
+    usuarios = get_usuarios()
     nombre_de_usuario = input("Ingrese su usuario: ")
-
-    try:
-        with open("usuarios.json", "r") as archivo:
-            usuarios = json.load(archivo)
-    except FileNotFoundError:
-        usuarios = {}
 
     if nombre_de_usuario in usuarios:
         print("El usuario ingresado ya se encuentra en la base de datos.")
