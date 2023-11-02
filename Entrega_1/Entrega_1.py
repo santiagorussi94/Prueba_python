@@ -31,9 +31,18 @@ def nuevo_usuario():
         print("Usuario registrado con éxito.")
 
 
-nuevo_usuario()
+while True:
+    print("\n1. Ingresa tu Usuario")
 
-# menu = input (print("Menu:\n 1-Nuevo Usuario \n 2-Verificar usuario \n 3-Salir"))
-# if menu == 1
-#     nuevo_usurio()
-#     else
+    print("2. Salir")
+    opcion = input("Elige una opción: ")
+
+    if opcion == "1":
+        nuevo_usuario()
+    elif opcion == "2":
+        break
+    else:
+        print("Opción no válida. Por favor, elige una opción válida.")        
+
+
+nuevo_usuario()
